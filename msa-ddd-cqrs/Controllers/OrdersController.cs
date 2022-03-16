@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using msa_ddd_cqrs.Database;
-
+using msa_ddd_cqrs.Domain.Aggregates.Order;
 
 namespace msa_ddd_cqrs.Controllers
 {
