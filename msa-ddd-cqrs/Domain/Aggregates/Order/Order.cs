@@ -9,5 +9,5 @@ public class Order
     public bool IsDraft { get; set; }
 
 
-    public List<OrderItem> OrderItems { get; set; }
+    public List<OrderItem> OrderItems { get; set; } = new();
 }
