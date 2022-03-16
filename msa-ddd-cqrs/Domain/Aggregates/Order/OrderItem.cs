@@ -1,9 +1,21 @@
-﻿namespace msa_ddd_cqrs.Domain.Aggregates.Order;
+﻿using msa_ddd_cqrs.Domain.Shared;
 
-public class OrderItem
+namespace msa_ddd_cqrs.Domain.Aggregates.Order;
+
+public class OrderItem : Entity
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public decimal Price { get; set; }
-    public int Units { get; set; }
+    // fields could be also private for better encapsulation
+    // 'Id' inhreited from Entity base class
+
+    public string Name { get; private set; }
+    public decimal Price { get; private set; }
+    public int Units { get; private set; }
+
+    protected OrderItem() { }
+    public OrderItem(string name, decimal price, int units)
+    {
+        Name = name;
+        Price = price;
+        Units = units;
+    }
 }
