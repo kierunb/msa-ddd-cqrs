@@ -36,13 +36,14 @@ namespace msa_ddd_cqrs.Controllers
         [HttpPost("save-order-test")]
         public async Task<IActionResult> Post()
         {
-            var order = new Order(buyerId: Guid.NewGuid(), address: "Address 1", orderStatus: "Created", isDraft: false);
+            var order = new Order(buyerId: Guid.NewGuid(), address: "Address 1", isDraft: false);
+            order.SetAsCreated();
             order.AddOrderItem(name: "Product 1", price: 12.34M, units: 3);
             
             _ordersDbContext.Orders.Add(order);
             await _ordersDbContext.SaveChangesAsync();
 
-            return Ok();
+            return Created($"/blogs{order.Id}", order);
         }
 
     }

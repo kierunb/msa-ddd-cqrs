@@ -18,7 +18,8 @@ public class OrderAggregateTests
     [Fact]
     public void RichModelUsageTest1()
     {
-        var order = new Order(buyerId: Guid.NewGuid(), address: "Address 1", orderStatus: "Created", isDraft: false );
+        var order = new Order(buyerId: Guid.NewGuid(), address: "Address 1", isDraft: false );
+        order.SetAsCreated();
         order.AddOrderItem(name: "Product 1", price: 12.34M, units: 3);
 
         Assert.True(order is not null);

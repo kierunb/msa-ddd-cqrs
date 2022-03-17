@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Hosting;
+using MediatR;
 using msa_ddd_cqrs.Database;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
