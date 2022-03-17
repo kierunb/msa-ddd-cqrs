@@ -1,4 +1,5 @@
-﻿using msa_ddd_cqrs.Domain.Shared;
+﻿using msa_ddd_cqrs.Domain.Exceptions;
+using msa_ddd_cqrs.Domain.Shared;
 
 namespace msa_ddd_cqrs.Domain.Aggregates.Order;
 
@@ -14,8 +15,18 @@ public class OrderItem : Entity
     protected OrderItem() { }
     public OrderItem(string name, decimal price, int units)
     {
+        if (units <= 0)
+        {
+            throw new OrderingDomainException("Invalid number of units");
+        }
+
         Name = name;
         Price = price;
         Units = units;
+    }
+
+    public decimal GetUnitPrice()
+    {
+        return Price;
     }
 }
